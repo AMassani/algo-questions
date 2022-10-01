@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+	public static string MysteryFunc(string str)
+	{
+		List<string> pairs = new List<string>();
+		for (int i = 0; i < str.Length; i += 2)
+		{
+			char characterToDuplicate = str[i];
+			int timesToDuplicate = int.Parse(str[i + 1].ToString());
+			string pairResult = duplicate(characterToDuplicate, timesToDuplicate);
+			pairs.Add(pairResult);
+		}
+		return String.Join("", pairs.ToArray());
+	}
+
+	private static string duplicate(char input, int times)
+	{
+		return new string(input, times);
+	}
+
+	public static void Main(String[] args)
+    {
+		string input = "A4B5C2";
+		string expectedOutput = "AAAABBBBBCC";
+		string actual = MysteryFunc(input);
+		Console.WriteLine(expectedOutput + "," + actual);
+    }
+}
